@@ -1,4 +1,6 @@
+
 import { Component } from '@angular/core'
+
 
 @Component({
     selector: 'app-todo-list',
@@ -7,11 +9,16 @@ import { Component } from '@angular/core'
 })
 
 export class TodoListComponent{
-    Task : String[] =['Task1', 'Task2', 'Task3', 'Task4']
-    
-    Tasks : String ;
+    tasks : string [] = [];
+     
+    task : string ;
+
     addTask() {
-        // console.log(this.Tasks);
-        this.Task.push(this.Tasks);
+        // console.log(this.task);
+        this.tasks.push(this.task);
+    }
+    deleteTask(now) {
+        console.log(now)
+        this.tasks = this.tasks.filter(t => t !== now)
     }
 }
