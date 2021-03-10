@@ -1,0 +1,9 @@
+.new-task{
+    border: black 1px solid;
+    padding: 10px;
+}
+.container{
+    border: 1px solid black;
+    width: 27%;
+    padding: 10px;
+}
