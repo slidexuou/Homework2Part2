@@ -1,6 +1,6 @@
 <div class = "container">
     <h2>My Tasks today</h2>
-    <app-task *ngFor="let task of tasks" [taskObj]="task" (deleteTask)="deleteTask($event)"></app-task>
+    <app-task *ngFor="let task of tasks" [taskObj]="task" (deleteTask)="deleteTask($event)"  (taskClick)="selectedTask($event)"></app-task>
     <div class="new-task">
     <p>Add task</p>
         <div>
@@ -10,6 +10,14 @@
         <div>
             Description : <input type="text" [(ngModel)]="taskDescription">
         </div>
+        <br>
+        <button (click)="addTask()">Add</button>
     </div>
-    <button (click)="addTask()">Add</button>
-</div>
+    <br>
+    <div class="box2 " *ngIf="taskSelect">
+        <span>
+            <h3>Task : {{taskSelect.name}}</h3>
+            <b>Description : </b> <span>{{taskSelect.description}}</span><
+        </span>
+    </div>
+</div>  

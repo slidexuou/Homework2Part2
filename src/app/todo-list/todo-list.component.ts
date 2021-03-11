@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core'
+import { Component, QueryList, ViewChildren } from '@angular/core'
 import { Task } from '../task';
 import { TaskComponent } from '../task/task.component';
 
@@ -11,11 +11,15 @@ import { TaskComponent } from '../task/task.component';
 })
 
 export class TodoListComponent {
+    @ViewChildren(TaskComponent) taskComps:QueryList<TaskComponent>;
     tasks : Task [] = [];
      
     // task : Task ; // id, name, description
     taskName:string;
     taskDescription:string;
+
+    taskSelect:Task;
+
 
     // {
     //     id:'xxxx',
@@ -47,5 +51,15 @@ export class TodoListComponent {
            return v.toString(16);
         });
      }
-        
+        selectedTask(taskComponent:TaskComponent){
+            // console.log(taskComponent.taskObj.name)
+           this.clearSelected();
+           taskComponent.isSelected=true;   
+           this.taskSelect=taskComponent.taskObj;
+        }
+        clearSelected(){
+            this.taskComps.forEach(task => {
+                    task.isSelected=false;
+                });
+        }
 }
